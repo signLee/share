@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>share</title>
+    <style>
+        body, html {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            cursor: pointer;
+
+        }
+        ul li {
+            list-style: none;
+        }
+
+        .indent0 {
+            text-indent: 0em;
+        }
+
+        .none {
+            display: none;
+        }
+
+        p, h3 {
+            text-indent: 2em;
+        }
+
+        .indent2Em {
+            text-indent: 2em;
+        }
+        #first,#final{
+            position: absolute;
+            left:0;
+            top:0;
+            bottom:0;
+            right:0;
+            width:100%;
+            min-height:100%;
+            background: #fff;
+        }
+        .center{
+            text-align: center;
+            position: relative;
+            left:50%;
+            top:50%;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+        }
+        .active{
+            opacity: 0;
+            z-index: -1;
+        }
+        .visiable{
+            opacity: 1;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="first">
+    <h1 class="center">开局一个空白页，内容全靠编</h1>
+</div>
+<div class="none" id="stringList">
+    <h2>String</h2>
+    <hr>
+    <ol >
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>charAt</em>
+            </h3>
+            <p>返回第index个的字符串</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回空字符串</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="aavscds";str.charAt(20);
+            </p>
+            <p>
+                return: "";
+            </p>
+            <p>
+                var str="aavscds";str.charAt(2);
+            </p>
+            <p>
+                return: "v";
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>charCodeAt</em>
+            </h3>
+            <p>返回指定索引位置的unicode编码</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回NaN</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str1="asdgeqer";str.charCodeAt(4);
+            </p>
+            <p>
+                return: 99;
+            </p>
+            <p>
+                var str1="asdgeqer";str.charCodeAt(456);
+            </p>
+            <p>
+                return: NaN;
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>fromCharCode</em>
+            </h3>
+            <p>返回传入的unicode编码对应的字符</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回空字符</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                String.fromCharCode(88);
+            </p>
+            <p>
+                return: "X";
+            </p>
+            <p>
+                String.fromCharCode();
+            </p>
+            <p>
+                return: "";
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>slice</em>
+            </h3>
+            <p>返回从从(start,end]位截取的字符</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回空字符</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="qwkejrlq";str.slice(1,3);
+            </p>
+            <p>
+                return: "wk";
+            </p>
+            <p>
+                var str="qwkejrlq";str.slice(1);//结束位置不传默认截取到length
+            </p>
+            <p>
+                return: "wkejrlq";
+            </p>
+            <p>
+                var str="qwkejrlq";str.slice();//都不传截取所有
+            </p>
+            <p>
+                return: "qwkejrlq";
+            </p>
+            <p>
+                var str="qwkejrlq";str.slice(66);//没找到
+            </p>
+            <p>
+                return: "";
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>substring</em>
+            </h3>
+            <p>返回从(start,end]位截取的字符</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回空字符</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="qwkejrlq";str.substring(1,5);
+            </p>
+            <p>
+                return: "wkej";
+            </p>
+            <p>
+                var str="qwkejrlq";str.substring(5,1);
+            </p>
+            <p>
+                return: "wkej";//默认会对起始位置和结束位置进行大小比较，小的为起始位
+            </p>
+            <p>
+                var str="qwkejrlq";str.substring(222,333);
+            </p>
+            <p>
+                return: "";
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>substr</em>
+            </h3>
+            <p>返回从(start,n个]字符</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回空字符</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="qwkejrlq";str.substr(1,2);
+            </p>
+            <p>
+                return: "wk";
+            </p>
+            <p>
+                var str="qwkejrlq";str.substr(55,666);
+            </p>
+            <p>
+                return: "";
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>indexOf</em>
+            </h3>
+            <p>返回字符串第一次出现的位置，没找到返回-1</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回-1</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="dfkjkalksdj";str.indexOf("k");
+            </p>
+            <p>
+                return: 2; //惰性
+            </p>
+            <p>
+                var str="dfkjkalksdj";str.indexOf("kal");
+            </p>
+            <p>
+                return: 4; //第一个字符的索引
+            </p>
+            <p>
+                var str="dfkjkalksdj";str.indexOf("kal32");
+            </p>
+            <p>
+                return: -1;
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>lastIndexOf</em>
+            </h3>
+            <p>返回字符串第一次出现的位置，没找到返回-1（从后往前找）</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回-1</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="dfkjkalksdj";str.lastIndexOf("k");
+            </p>
+            <p>
+                return: 7; //惰性
+            </p>
+            <p>
+                var str="dfkjkalksdj";str.indexOf("kal");
+            </p>
+            <p>
+                return: 4; //第一个字符的索引
+            </p>
+            <p>
+                var str="dfkjkalksdj";str.indexOf("kal32");
+            </p>
+            <p>
+                return: -1;
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>search</em>
+            </h3>
+            <p>返回根据传入的规则匹配到的字符的位置</p>
+            <p>
+                <span>未找到：</span>
+                <span>返回-1</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="gbbawer";str.search("bba");
+            </p>
+            <p>
+                return: 1;
+            </p>
+            <p>
+                var str="gbbawer";str.search(/aw/i);
+            </p>
+            <p>
+                return: 3;
+            </p>
+            <p>
+                var str="gbbawer";str.search(/aw2/i);
+            </p>
+            <p>
+                return: -1;
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>concat</em>
+            </h3>
+            <p>返回连接后的字符串</p>
+            <p>
+                <span>未找到：</span>
+                <span></span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="gbbawer";var str2="aaaaaa";str.concat(str2);
+            </p>
+            <p>
+                return: "gbbaweraaaaaa";
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>split</em>
+            </h3>
+            <p>返回根据规格切割过后的字符串</p>
+            <p>
+                <span>未找到：</span>
+                <span>整个字符切成一个数组</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="gbbawer";str.split("bb");
+            </p>
+            <p>
+                return: ["g", "awer"];
+            </p>
+            <p>
+                var str="gbbawer";str.split("bbq");
+            </p>
+            <p>
+                return: ["gbbawer"];
+            </p>
+            <p>
+                var str="gbbawer";str.split("");
+            </p>
+            <p>
+                return: ["g", "b", "b", "a", "w", "e", "r"];
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>toLowerCase</em>
+            </h3>
+            <p>返回被转成小写的字符串</p>
+            <p>
+                <span>未找到：</span>
+                <span></span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="ASDdsgdsfg"; str.toLowerCase();
+            </p>
+            <p>
+                return: "asddsgdsfg";
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>toUpperCase</em>
+            </h3>
+            <p>返回被转成大写的字符串</p>
+            <p>
+                <span>未找到：</span>
+                <span></span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var str="ASDdsgdsfg"; str.toUpperCase();
+            </p>
+            <p>
+                return: "ASDDSGDSFG";
+            </p>
+            <hr>
+        </li>
+    </ol>
+</div>
+<div class="none" id="arrList">
+    <h2>Array</h2>
+    <hr>
+    <ol >
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>push</em>
+            </h3>
+            <p>作用：往数组的最后一位添加数据</p>
+            <p>
+                <span>返回值：</span>
+                <span>push后数组的长度</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4,5];arr.push(8);
+            </p>
+            <p>
+                return: 6;
+            </p>
+            <p>
+                原数组是否发生改变：是
+            </p>
+            <p>
+                方法调用后原数组为：[1,2,3,4,5,8];
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>unshift</em>
+            </h3>
+            <p>作用：往数组的最前面添加数据</p>
+            <p>
+                <span>返回值：</span>
+                <span>unshift后数组的长度</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4,5];arr.unshift(8);
+            </p>
+            <p>
+                return: 6;
+            </p>
+            <p>
+                原数组是否发生改变：是
+            </p>
+            <p>
+                方法调用后原数组为：[8,1,2,3,4,5];
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>pop</em>
+            </h3>
+            <p>作用：删除数组的最后一个</p>
+            <p>
+                <span>返回值：</span>
+                <span>删除的值</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4,5];arr.pop();
+            </p>
+            <p>
+                return: 5;
+            </p>
+            <p>
+                原数组是否发生改变：是
+            </p>
+            <p>
+                方法调用后原数组为：[1,2,3,4]; //如果数组里没有东西了继续删除会返回undefined
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>shift</em>
+            </h3>
+            <p>作用：删除数组的第一个</p>
+            <p>
+                <span>返回值：</span>
+                <span>删除的值</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4,5];arr.shift();
+            </p>
+            <p>
+                return: 1;
+            </p>
+            <p>
+                原数组是否发生改变：是
+            </p>
+            <p>
+                方法调用后原数组为：[1,2,3,4];
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>splice</em>
+            </h3>
+            <p>作用：向数组中间某个位置添加内容从索引n开始，删除m个内容，把新增的内容x放在n的前面</p>
+            <p>
+                <span>返回值：</span>
+                <span>删除的值（数组）</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4,5,6];arr.splice(1,2,8,8);
+            </p>
+            <p>
+                return: [2, 3];
+            </p>
+            <p>
+                原数组是否发生改变：是
+            </p>
+            <p>
+                方法调用后原数组为：[1, 8, 8, 4, 5, 6];
+            </p>
+            <p>
+                splice(0,0,x);相当于unshift
+            </p>
+            <p>
+                splice(ary.length,0,x);相当于push
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>reverse</em>
+            </h3>
+            <p>作用：数组倒过来排列</p>
+            <p>
+                <span>返回值：</span>
+                <span>删除的值（数组）</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4,5,6];arr.reverse();
+            </p>
+            <p>
+                return: [6, 5, 4, 3, 2, 1];
+            </p>
+            <p>
+                原数组是否发生改变：是
+            </p>
+            <p>
+                方法调用后原数组为：[6, 5, 4, 3, 2, 1];
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>join</em>
+            </h3>
+            <p>作用：把数组用指定的方式连接转成字符串</p>
+            <p>
+                <span>返回值：</span>
+                <span>按规则拼接后的字符串</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4,5,6];arr.join();
+            </p>
+            <p>
+                return: "1,2,3,4,5,6";//默认逗号
+            </p>
+            <p>
+                原数组是否发生改变：否
+            </p>
+            <p>
+                方法调用后原数组为：[1,2,3,4,5,6];
+            </p>
+            <p>
+                var arr=[1,2,3,4,5,6];arr.join("");
+                return: "123456";
+            </p>
+            <p>
+                var arr=[1,2,3,4,5,6];arr.join("*");
+                return: "1*2*3*4*5*6";
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>sort</em>
+            </h3>
+            <p>作用：数组排序（只能比较10以内的数）</p>
+            <p>
+                <span>返回值：</span>
+                <span>按规则排序后的数组</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[3,34,1,12,457,1232,45,23,68,13,32];arr.sort();
+            </p>
+            <p>
+                return: [1, 12, 1232, 13, 23, 3, 32, 34, 45, 457, 68];//只能比较10以内的数字
+            </p>
+            <p>
+                原数组是否发生改变：是
+            </p>
+            <p>
+                方法调用后原数组为：[1, 12, 1232, 13, 23, 3, 32, 34, 45, 457, 68];
+            </p>
+            <p>
+                var arr=[4,1,7,2,4,8,9,3];arr.sort()
+                return: [1, 2, 3, 4, 4, 7, 8, 9];
+            </p>
+            <p>
+                var arr=[3,34,1,12,457,1232,45,23,68,13,32];arr.sort(function(a,b){return b-a});// b-a降序 a-b升序
+                return: [1232, 457, 68, 45, 34, 32, 23, 13, 12, 3, 1];
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>concat</em>
+            </h3>
+            <p>作用：数组连接</p>
+            <p>
+                <span>返回值：</span>
+                <span>连接后的数组</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4];var arr1=[7,8,9];arr.concat(arr1);
+            </p>
+            <p>
+                return: [1, 2, 3, 4, 7, 8, 9];//只能比较10以内的数字
+            </p>
+            <p>
+                原数组是否发生改变：否
+            </p>
+            <p>
+                方法调用后原数组为：[1, 2, 3, 4];
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>toString</em>
+            </h3>
+            <p>作用：把数组转成字符串用逗号隔开</p>
+            <p>
+                <span>返回值：</span>
+                <span>连接后的数组</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4];arr.toString();
+            </p>
+            <p>
+                return: "1,2,3,4";//只能比较10以内的数字
+            </p>
+            <p>
+                原数组是否发生改变：否
+            </p>
+            <p>
+                方法调用后原数组为：[1, 2, 3, 4];
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>slice</em>
+            </h3>
+            <p>作用：截取数组（n,m]位的值</p>
+            <p>
+                <span>返回值：</span>
+                <span>被选中的值</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4];arr.slice(1,3);
+            </p>
+            <p>
+                return: [2,3];//只能比较10以内的数字
+            </p>
+            <p>
+                原数组是否发生改变：否
+            </p>
+            <p>
+                方法调用后原数组为：[1, 2, 3, 4];
+            </p>
+            <p>
+                var arr=[1,2,3,4];arr.slice(1);
+                return: [2,3,4];
+            </p>
+            <p>
+                var arr=[1,2,3,4];arr.slice(0);
+                return: [1,2,3,4];//复制数组
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>indexOf</em>
+            </h3>
+            <p>作用：在数组中查找某一个字符串出现的索引位置</p>
+            <p>
+                <span>返回值：</span>
+                <span>索引值</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,2,3,4];arr.indexOf(3);
+            </p>
+            <p>
+                return: 2;//只能比较10以内的数字
+            </p>
+            <p>
+                原数组是否发生改变：否
+            </p>
+            <p>
+                方法调用后原数组为：[1, 2, 3, 4];//IE9+
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>forEach</em>
+            </h3>
+            <p>作用：为数组中的每个元素执行指定操作。</p>
+            <p>
+                <span>返回值：</span>
+                <span>无</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,32,4,5,6];arr.forEach(function(value){console.log(value)});
+            </p>
+            <p>
+                return: undefined;//只能比较10以内的数字
+            </p>
+            <p>
+                原数组是否发生改变：否
+            </p>
+            <p>
+                方法调用后原数组为：[1,32,4,5,6];//IE9+
+            </p>
+            <hr>
+        </li>
+        <li>
+            <h3>
+                <span>方法名：</span>
+                <em>map</em>
+            </h3>
+            <p>作用：为数组中的每个元素执行指定操作。</p>
+            <p>
+                <span>返回值：</span>
+                <span>根据函数的返回值来定</span>
+            </p>
+            <p>EG:</p>
+            <p>
+                var arr=[1,32,4,5,6];arr.map(function(value,index){return value*5});
+            </p>
+            <p>
+                return: [5, 160, 20, 25, 30];
+            </p>
+            <p>
+                原数组是否发生改变：否
+            </p>
+            <p>
+                方法调用后原数组为：[1,32,4,5,6];//IE9+
+            </p>
+            <hr>
+        </li>
+    </ol>
+</div>
+<div class="none" id="lodash">
+    <h2>Lodash</h2>
+    <div>
+        <hr>
+        <p>lodash是什么？------一套工具类库，内部封装了一些如数组、对象、字符串的数据类型处理函数</p>
+        <p>出现原因：目前ECMAScript尚未定制相关规范、相关方法未完善化</p>
+        <p>用户量：目前每天使用 npm 安装 Lodash 的数量在百万级以上</p>
+        <img src="./shareImg/vue.png" height="100%" alt="">
+        <img src="./shareImg/lodashGit.png" height="100%" alt="">
+        <p>使用:</p>
+        <hr>
+        <p>git地址：https://github.com/lodash/lodash</p>
+        <p>安装：npm i lodash --S（开发依赖，--S会被保存在dependencies）</p>
+        <img src="./shareImg/packageJson.png" height="100%" alt="">
+        <p>或者也可以使用script方式引用</p>
+        <p>在组件里引入：import _ from 'lodash'</p>
+        <div>
+            使用：
+            <p>使用项目：闲汇（省市区三级联动组件封装）</p>
+            效果：
+            <img src="./shareImg/liandong.png" height="100%" alt="">
+            <br><br><br>
+            <p>原始数据：</p>
+            <div>
+                <img src="./shareImg/province.png" height="100%" alt="">
+                <img src="./shareImg/city.png" height="100%" alt="">
+                <img src="./shareImg/area.png" height="100%" alt="">
+            </div>
+            <p>
+                思路：三个Array，省级数据直接循环渲染，点击后获取省级codeID，然后通过codeID在cityArray里找city[i].parentId==province.code即可获取所选省份下的市级数据，区级数据同理</p>
+            <p>代码：</p>
+            <div>
+                正常ES5：
+                <img src="./shareImg/ES5filter.png" height="100%" alt="">
+                <br><br>
+            </div>
+            <div>
+                lodash:
+                <img src="./shareImg/lodashUse.png" height="100%" alt="">
+            </div>
+            <p>数据格式处理：</p>
+            <br><br>
+            要求：<br><br>
+            <img src="./shareImg/dataChange.png" height="100%" alt="">
+            <div>
+                正常ES5：<br><br>
+                <img src="./shareImg/dataChange3.png" height="100%" alt="">
+                <br><br>
+                结果：
+                <img src="./shareImg/es5result.png" height="100%" alt="">
+                <br><br>
+            </div>
+            <div>
+                lodash:<br><br>
+                <img src="./shareImg/dataChange4.png" height="100%" alt="">
+            </div>
+        </div>
+        <br><br><br>
+        <hr>
+        <h3>部分功能推荐：</h3>
+        <ul class="lodashList">
+            <li>
+                <h3>方法名：fill</h3>
+                <p><span>作用：使用 value 值来填充（也就是替换） array，从start位置开始, 到end位置结束（但不包含end位置）
+参数</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要填充的数组</p>
+                    <p>2. value (*): 填充 array 元素的值</p>
+                    <p>3. [start=0] (number): 起始位置（包含）</p>
+                    <p>4. [end=array.length] (number): 结束位置（不含）</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/fill-lodash.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/fill_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：compact</h3>
+                <p><span>作用：创建一个新数组并包含原数组中所有的非假值元素。例如 false、null、 0、""、undefined 和 NaN 都是“假值”。</span></p>
+                <br>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <p>_.compact([0, 1, false, 2, '', 3]);</p>
+                    <p> => [1, 2, 3]</p>
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/compact_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：pullAt(array, [indexes])</h3>
+                <p><span>作用：移除指定索引的数组元素，并返回移除的元素，索引值明确给出或者是索引数组</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要修改的数组</p>
+                    <p>2. [indexes] (...(number|number[]): 需要移除元素的索引, 数组的索引值或者索引数组.</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/pullAt.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/pullAt_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：remove(array, [predicate=_.identity], [thisArg])</h3>
+                <p><span>作用：移除数组 array 中满足 predicate 条件的所有元素 ，返回的是被移除元素数组.</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要修改的数组</p>
+                    <p>2. [predicate=_.identity] (Function|Object|string): 遍历判断的方法</p>
+                    <p>3. [thisArg] (*): 和参数predicate绑定</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/remove.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/remove_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：reject(collection, [predicate=_.identity], [thisArg])</h3>
+                <p><span>作用：删除符合条件的数据</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要修改的数组</p>
+                    <p>2. [predicate=_.identity] (Function|Object|string): 遍历判断的方法</p>
+                    <p>3. [thisArg] (*): 和参数predicate绑定</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/reject.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <p>跟remove差不多，只不过这个返回的是被删除过后的数组</p>
+                </div>
+            </li>
+            <li>
+                <h3>方法名：pluck(collection, path)</h3>
+                <p><span>作用：从集合中找出所有符合条件的值</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1.collection集合</p>
+                    <p>2.path要找的规则</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/pluck.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/pluck_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：reverse()</h3>
+                <p><span>作用：数组倒序</span></p>
+                <br>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/reverse.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/reverse_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：difference(array, [values])</h3>
+                <p><span>作用：数组去除指定的值</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要过滤的数组</p>
+                    <p>2. [values] (...Array): 数组需要排除掉的值</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/difference.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/difference_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：indexOf(array, value, [fromIndex=0])</h3>
+                <p><span>作用：返回元素在数组中的索引位置, else -1.</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要过滤的数组</p>
+                    <p>2. value (*): 需要查找的元素</p>
+                    <p>3. [fromIndex=0] (boolean|number): 查询的位置或者true值时对一个已排序的数组进行二分查找.</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/indexOf.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/indexOf_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：pull(array, [values])</h3>
+                <p><span>作用：移除数组array中所有和 values 相等的元素</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要过滤的数组</p>
+                    <p>2. value (*): 移除的元素</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/pull.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/pull_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：take(array, [n=1])</h3>
+                <p><span>作用：从数组的起始位置开始，取n个元素;n默认是1</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要过滤的数组</p>
+                    <p>2. [n=1] (number): 获取的元素个数</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/take.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/take_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：union([arrays])</h3>
+                <p><span>作用：多个数组去重</span></p>
+                <br>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/union.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/union_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：uniq</h3>
+                <p><span>作用：数组去重</span></p>
+                <br>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/uniq.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/uniq_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：xor</h3>
+                <p><span>作用：多个数组求差集</span></p>
+                <br>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/xor.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/xor_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：filter(collection, [predicate=_.identity], [thisArg])</h3>
+                <p><span>作用：在集合中过滤所需元素</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. array (Array): 需要过滤的数组</p>
+                    <p>2. predicate=_.identity过滤的条件</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/filter.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/filter_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：includes(collection, target, [fromIndex=0])</h3>
+                <p><span>作用：判断数组是否包含所传的值</span></p>
+                <br>
+                <p>参数说明：</p>
+                <div class="indent2Em">
+                    <p>1. collection集合</p>
+                    <p>2. target判断是否包含的目标</p>
+                    <p>3. fromIndex=0从哪里开始找，默认从索引为0的位置</p>
+                </div>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/includes.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/includes_fz.png" alt="">
+                </div>
+            </li>
+            <li>
+                <h3>方法名：map(collection, [iteratee=_.identity], [thisArg])</h3>
+                <p><span>作用：将集合中的所有元素拿出来执行传入的函数</span></p>
+                <br>
+                <h3>EG:</h3>
+                <div class="indent2Em">
+                    <p>lodash:</p>
+                    <img src="./shareImg/map.png" alt="">
+                </div>
+                <div class="indent2Em">
+                    <p>ES5:</p>
+                    <img src="./shareImg/map_fz.png" alt="">
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<canvas class="active"  id="canvas"></canvas>
+<script>
+    window.onload = function () {
+        var oFirst = document.querySelector('#first');
+        var oStringList = document.querySelector('#stringList');
+        var oArrList = document.querySelector('#arrList');
+        var oLodashList = document.querySelector('#lodash');
+        var oCanvas = document.querySelector('#canvas');
+        var times = 0;
+        var times1 = 0;
+        var times2 = 0;
+        oFirst.ondblclick = function () {
+            oFirst.classList.add("none");
+            oStringList.classList.remove("none");
+        }
+        oStringList.onclick = function () {
+            times++;
+            if (times >= 3) {
+                oStringList.classList.add("none");
+                oArrList.classList.remove("none");
+            }
+            setTimeout(function () {
+                times = 0;
+            }, 1000)
+        }
+        oArrList.onclick = function () {
+            times1++;
+            if (times1 >= 3) {
+                oArrList.classList.add("none");
+                oLodashList.classList.remove("none");
+            }
+            setTimeout(function () {
+                times1 = 0;
+            }, 1000)
+        }
+        oLodashList.onclick = function () {
+            times2++;
+            if (times2 >= 3) {
+                oLodashList.classList.add("none");
+                oCanvas.classList.remove("active").add("none");
+            }
+            setTimeout(function () {
+                times2 = 0;
+            }, 1000)
+        }
+    }
+    {
+        class Robot {
+            constructor(color, light, size, x, y, struct) {
+                this.x = x;
+                this.points = [];
+                this.links = [];
+                this.frame = 0;
+                this.dir = 1;
+                this.size = size;
+                this.color = Math.round(color);
+                this.light = light;
+                // ---- create points ----
+                for (const p of struct.points) {
+                    this.points.push(new Robot.Point(size * p.x + x, size * p.y + y, p.f));
+                }
+                // ---- create links ----
+                for (const link of struct.links) {
+                    const p0 = this.points[link.p0];
+                    const p1 = this.points[link.p1];
+                    const dx = p0.x - p1.x;
+                    const dy = p0.y - p1.y;
+                    this.links.push(
+                        new Robot.Link(
+                            this,
+                            p0,
+                            p1,
+                            Math.sqrt(dx * dx + dy * dy),
+                            link.size * size / 3,
+                            link.lum,
+                            link.force,
+                            link.disk
+                        )
+                    );
+                }
+            }
+            update() {
+                if (++this.frame % 20 === 0) this.dir = -this.dir;
+                if (
+                    dancerDrag &&
+                    this === dancerDrag &&
+                    this.size < 16 &&
+                    this.frame > 600
+                ) {
+                    dancerDrag = null;
+                    dancers.push(
+                        new Robot(
+                            this.color,
+                            this.light * 1.25,
+                            this.size * 2,
+                            pointer.x,
+                            pointer.y - 100 * this.size * 2,
+                            struct
+                        )
+                    );
+                    dancers.sort(function(d0, d1) {
+                        return d0.size - d1.size;
+                    });
+                }
+                // ---- update links ----
+                for (const link of this.links) {
+                    const p0 = link.p0;
+                    const p1 = link.p1;
+                    const dx = p0.x - p1.x;
+                    const dy = p0.y - p1.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist) {
+                        const tw = p0.w + p1.w;
+                        const r1 = p1.w / tw;
+                        const r0 = p0.w / tw;
+                        const dz = (link.distance - dist) * link.force;
+                        const sx = dx / dist * dz;
+                        const sy = dy / dist * dz;
+                        p1.x -= sx * r0;
+                        p1.y -= sy * r0;
+                        p0.x += sx * r1;
+                        p0.y += sy * r1;
+                    }
+                }
+                // ---- update points ----
+                for (const point of this.points) {
+                    // ---- dragging ----
+                    if (this === dancerDrag && point === pointDrag) {
+                        point.x += (pointer.x - point.x) * 0.1;
+                        point.y += (pointer.y - point.y) * 0.1;
+                    }
+                    // ---- dance ----
+                    if (this !== dancerDrag) {
+                        point.fn && point.fn(16 * Math.sqrt(this.size), this.dir);
+                    }
+                    // ---- verlet integration ----
+                    point.vx = point.x - point.px;
+                    point.vy = point.y - point.py;
+                    point.px = point.x;
+                    point.py = point.y;
+                    point.vx *= 0.995;
+                    point.vy *= 0.995;
+                    point.x += point.vx;
+                    point.y += point.vy + 0.01;
+                }
+                // ---- ground ----
+                for (const link of this.links) {
+                    const p1 = link.p1;
+                    if (p1.y > canvas.height * ground - link.size * 0.5) {
+                        p1.y = canvas.height * ground - link.size * 0.5;
+                        p1.x -= p1.vx;
+                        p1.vx = 0;
+                        p1.vy = 0;
+                    }
+                }
+                // ---- center position ----
+                const delta = (this.x - this.points[0].x) * 0.0002;
+                this.points[9].x += delta;
+                this.points[10].x += delta;
+            }
+            draw() {
+                for (const link of this.links) {
+                    if (link.size) {
+                        const dx = link.p1.x - link.p0.x;
+                        const dy = link.p1.y - link.p0.y;
+                        const a = Math.atan2(dy, dx);
+                        const d = Math.sqrt(dx * dx + dy * dy);
+                        // ---- shadow ----
+                        ctx.save();
+                        ctx.translate(link.p0.x + link.size * 0.25, link.p0.y + link.size * 0.25);
+                        ctx.rotate(a);
+                        ctx.drawImage(
+                            link.shadow,
+                            -link.size * 0.5,
+                            -link.size * 0.5,
+                            d + link.size,
+                            link.size
+                        );
+                        ctx.restore();
+                        // ---- stroke ----
+                        ctx.save();
+                        ctx.translate(link.p0.x, link.p0.y);
+                        ctx.rotate(a);
+                        ctx.drawImage(
+                            link.image,
+                            -link.size * 0.5,
+                            -link.size * 0.5,
+                            d + link.size,
+                            link.size
+                        );
+                        ctx.restore();
+                    }
+                }
+            }
+        }
+        Robot.Link = class Link {
+            constructor(parent, p0, p1, dist, size, light, force, disk) {
+                // ---- cache strokes ----
+                function stroke(color, axis) {
+                    const image = document.createElement("canvas");
+                    image.width = dist + size;
+                    image.height = size;
+                    const ict = image.getContext("2d");
+                    ict.beginPath();
+                    ict.lineCap = "round";
+                    ict.lineWidth = size;
+                    ict.strokeStyle = color;
+                    if (disk) {
+                        ict.arc(size * 0.5 + dist, size * 0.5, size * 0.5, 0, 2 * Math.PI);
+                        ict.fillStyle = color;
+                        ict.fill();
+                    } else {
+                        ict.moveTo(size * 0.5, size * 0.5);
+                        ict.lineTo(size * 0.5 + dist, size * 0.5);
+                        ict.stroke();
+                    }
+                    if (axis) {
+                        const s = size / 10;
+                        ict.fillStyle = "#000";
+                        ict.fillRect(size * 0.5 - s, size * 0.5 - s, s * 2, s * 2);
+                        ict.fillRect(size * 0.5 - s + dist, size * 0.5 - s, s * 2, s * 2);
+                    }
+                    return image;
+                }
+                this.p0 = p0;
+                this.p1 = p1;
+                this.distance = dist;
+                this.size = size;
+                this.light = light || 1.0;
+                this.force = force || 0.5;
+                this.image = stroke(
+                    "hsl(" + parent.color + " ,30%, " + parent.light * this.light + "%)",
+                    true
+                );
+                this.shadow = stroke("rgba(0,0,0,0.5)");
+            }
+        };
+        Robot.Point = class Point {
+            constructor(x, y, fn, w) {
+                this.x = x;
+                this.y = y;
+                this.w = w || 0.5;
+                this.fn = fn || null;
+                this.px = x;
+                this.py = y;
+                this.vx = 0.0;
+                this.vy = 0.0;
+            }
+        };
+        // ---- set canvas ----
+        const canvas = {
+            init() {
+                this.elem = document.querySelector("canvas");
+                this.resize();
+                window.addEventListener("resize", () => this.resize(), false);
+                return this.elem.getContext("2d");
+            },
+            resize() {
+                this.width = this.elem.width = this.elem.offsetWidth;
+                this.height = this.elem.height = this.elem.offsetHeight;
+                ground = this.height > 500 ? 0.85 : 1.0;
+                for (let i = 0; i < dancers.length; i++) {
+                    dancers[i].x = (i + 2) * canvas.width / 9;
+                }
+            }
+        };
+        // ---- set pointer ----
+        const pointer = {
+            init(canvas) {
+                this.x = 0;
+                this.y = 0;
+                window.addEventListener("mousemove", e => this.move(e), false);
+                canvas.elem.addEventListener("touchmove", e => this.move(e), false);
+                window.addEventListener("mousedown", e => this.down(e), false);
+                window.addEventListener("touchstart", e => this.down(e), false);
+                window.addEventListener("mouseup", e => this.up(e), false);
+                window.addEventListener("touchend", e => this.up(e), false);
+            },
+            down(e) {
+                this.move(e);
+                for (const dancer of dancers) {
+                    for (const point of dancer.points) {
+                        const dx = pointer.x - point.x;
+                        const dy = pointer.y - point.y;
+                        const d = Math.sqrt(dx * dx + dy * dy);
+                        if (d < 60) {
+                            dancerDrag = dancer;
+                            pointDrag = point;
+                            dancer.frame = 0;
+                        }
+                    }
+                }
+            },
+            up(e) {
+                dancerDrag = null;
+            },
+            move(e) {
+                let touchMode = e.targetTouches,
+                    pointer;
+                if (touchMode) {
+                    e.preventDefault();
+                    pointer = touchMode[0];
+                } else pointer = e;
+                this.x = pointer.clientX;
+                this.y = pointer.clientY;
+            }
+        };
+        // ---- init ----
+        const dancers = [];
+        let ground = 1.0;
+        const ctx = canvas.init();
+        pointer.init(canvas);
+        let dancerDrag = null;
+        let pointDrag = null;
+        // ---- main loop ----
+        const run = () => {
+            requestAnimationFrame(run);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#222";
+            ctx.fillRect(0, 0, canvas.width, canvas.height * 0.15);
+            ctx.fillRect(0, canvas.height * 0.85, canvas.width, canvas.height * 0.15);
+            for (const dancer of dancers) {
+                dancer.update();
+                dancer.draw();
+            }
+        };
+        // ---- robot structure ----
+        const struct = {
+            points: [
+                {
+                    x: 0,
+                    y: -4,
+                    f(s, d) {
+                        this.y -= 0.01 * s;
+                    }
+                },
+                {
+                    x: 0,
+                    y: -16,
+                    f(s, d) {
+                        this.y -= 0.02 * s * d;
+                    }
+                },
+                {
+                    x: 0,
+                    y: 12,
+                    f(s, d) {
+                        this.y += 0.02 * s * d;
+                    }
+                },
+                { x: -12, y: 0 },
+                { x: 12, y: 0 },
+                {
+                    x: -3,
+                    y: 34,
+                    f(s, d) {
+                        if (d > 0) {
+                            this.x += 0.01 * s;
+                            this.y -= 0.015 * s;
+                        } else {
+                            this.y += 0.02 * s;
+                        }
+                    }
+                },
+                {
+                    x: 3,
+                    y: 34,
+                    f(s, d) {
+                        if (d > 0) {
+                            this.y += 0.02 * s;
+                        } else {
+                            this.x -= 0.01 * s;
+                            this.y -= 0.015 * s;
+                        }
+                    }
+                },
+                {
+                    x: -28,
+                    y: 0,
+                    f(s, d) {
+                        this.x += this.vx * 0.035;
+                        this.y -= 0.001 * s;
+                    }
+                },
+                {
+                    x: 28,
+                    y: 0,
+                    f(s, d) {
+                        this.x += this.vx * 0.035;
+                        this.y -= 0.001 * s;
+                    }
+                },
+                {
+                    x: -3,
+                    y: 64,
+                    f(s, d) {
+                        this.y += 0.015 * s;
+                        if (d > 0) {
+                            this.y -= 0.01 * s;
+                        } else {
+                            this.y += 0.05 * s;
+                        }
+                    }
+                },
+                {
+                    x: 3,
+                    y: 64,
+                    f(s, d) {
+                        this.y += 0.015 * s;
+                        if (d > 0) {
+                            this.y += 0.05 * s;
+                        } else {
+                            this.y -= 0.01 * s;
+                        }
+                    }
+                }
+            ],
+            links: [
+                { p0: 3, p1: 7, size: 12, lum: 0.5 },
+                { p0: 1, p1: 3, size: 24, lum: 0.5 },
+                { p0: 1, p1: 0, size: 60, lum: 0.5, disk: 1 },
+                { p0: 5, p1: 9, size: 16, lum: 0.5 },
+                { p0: 2, p1: 5, size: 32, lum: 0.5 },
+                { p0: 1, p1: 2, size: 50, lum: 1 },
+                { p0: 6, p1: 10, size: 16, lum: 1.5 },
+                { p0: 2, p1: 6, size: 32, lum: 1.5 },
+                { p0: 4, p1: 8, size: 12, lum: 1.5 },
+                { p0: 1, p1: 4, size: 24, lum: 1.5 }
+            ]
+        };
+        // ---- instanciate robots ----
+        for (let i = 0; i < 6; i++) {
+            dancers.push(
+                new Robot(
+                    i * 360 / 7,
+                    80,
+                    4,
+                    (i + 2) * canvas.width / 9,
+                    canvas.height * ground - 340,
+                    struct
+                )
+            );
+        }
+        run();
+    }
+
+</script>
+</body>
+</html>
